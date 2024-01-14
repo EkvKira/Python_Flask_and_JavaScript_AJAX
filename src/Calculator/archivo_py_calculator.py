@@ -44,38 +44,3 @@ def calculator():
 
 if __name__ == '__main__':
     app.run(port=5000)
-
-"""
-
-
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app)
-
-@app.route('/calculator', methods=['POST'])
-def calculator():
-    try:
-        number1 = float(request.form['number1'])
-        number2 = float(request.form['number2'])
-        operation = request.form['operation']
-    except ValueError:
-        return "Invalid input for 'numero1' or 'numero2'", 400
-
-    if operation == 'multiply':
-        result = number1 * number2
-    elif operation == 'divide':
-        result = number1 / number2
-    elif operation == 'add':
-        result = number1 + number2
-    elif operation == 'subtract':
-        result = number1 - number2
-    else:
-        return "Invalid operation", 400
-
-    return jsonify(result)
-
-if __name__ == '__main__':
-    app.run(port=5000)
-"""
