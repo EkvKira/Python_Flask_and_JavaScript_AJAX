@@ -63,7 +63,7 @@ Esto iniciará el servidor de desarrollo de Flask.
 Este servidor de desarrollo es solo para propósitos de desarrollo. No lo utilices en un entorno de producción. Para implementaciones en producción, considera utilizar un servidor WSGI como Gunicorn junto con un servidor web como Nginx o Apache.
 
 Asegúrate de personalizar el contenido según las necesidades específicas de tu proyecto. ¡Espero que esto te sea útil!
-20pantalla_6
+
 **Ejemplo - Número aleatorio:**
 ![Random_number](https://github.com/EkvKira/Python_Flask_and_JavaScript_AJAX/blob/main/Captura%20de%20pantalla_5.jpg)
 
