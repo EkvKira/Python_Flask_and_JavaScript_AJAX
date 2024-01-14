@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search User</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Search User</h1>
+
+  <form id="searchForm">
+    <label for="userName">Name:</label>
+    <input type="text" id="userName" name="userName" required>
+    <button type="button" onclick="searchUser()">Search</button>
+  </form>
+
+  <ul id="userDataList"></ul>
+
+  <script>
+    function searchUser() {
+      var userName = document.getElementById('userName').value;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://localhost:5000/search_user', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');  // Correction here
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var response = JSON.parse(xhr.responseText);
+          displayUserData(response);
+        }
+      };
+
+      var data = { "name": userName };
+      xhr.send(JSON.stringify(data));
+    }
+
+    function displayUserData(userData) {
+      var dataList = document.getElementById('userDataList');
+      dataList.innerHTML = '';
+
+      var listItem = document.createElement('li');
+      listItem.textContent = 'Name: ' + userData.name;
+      dataList.appendChild(listItem);
+
+      listItem = document.createElement('li');
+      listItem.textContent = 'Age: ' + userData.age;
+      dataList.appendChild(listItem);
+
+      listItem = document.createElement('li');
+      listItem.textContent = 'City: ' + userData.city;
+      dataList.appendChild(listItem);
+    }
+  </script>
+
+</body>
+</html>
